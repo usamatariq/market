@@ -4,7 +4,6 @@
 	class Database {
 		function connect() {
 			$globe = new Globe();
-			echo('mysql:dbname=' . $globe::DATABASE . ';host=' . $globe::HOST . ';charset=UTF8'. $globe::USER. $globe::PASSWORD);
 			$db = new PDO('mysql:dbname=' . $globe::DATABASE . ';host=' . $globe::HOST . ';charset=UTF8', $globe::USER, $globe::PASSWORD);
 
 			$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 

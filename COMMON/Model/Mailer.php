@@ -8,9 +8,10 @@
 		const HOST = 'smtp.gmail.com'; // "ssl://smtp.gmail.com" didn't worked
 		const PORT = 587;
 		const SMTPSECURE = 'tls';
+
 		
-		const EMAIL_USERNAME = "@gmail.com";
-		const EMAIL_PASSWORD = "";
+		const EMAIL_USERNAME = "snatchmarket@gmail.com";
+		const EMAIL_PASSWORD = "Sn@tchmark3t";
 		
 		private $mailer;
 		
@@ -41,7 +42,7 @@
 		private function create_mailer() {
 			$this->mailer = new PHPMailer();
 			
-			$this->mailer->IsSMTP();
+			$this->mailer->IsSMTP();// enable SMTP
 			$this->mailer->Mailer = $this::MAILER;
 			$this->mailer->SMTPAuth = $this::SMTPAUTH;
 			$this->mailer->Host = $this::HOST; 

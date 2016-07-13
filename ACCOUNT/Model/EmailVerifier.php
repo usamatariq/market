@@ -7,8 +7,7 @@
 		
 		const SUCCESS = 0;
 		const FAILURE = 1;
-		const EMAIL_FAILURE = 2;
-		
+		const EMAIL_FAILURE = 2;		
 		const CODE_INVALID = 3;
 		
 		private $account;
@@ -28,12 +27,12 @@
 			if($code != null) {
 				$to_name = "Newcomer!";
 				
-				$from_email = "danceseen@gmail.com";
-				$from_name = "Danceseen";
+				$from_email = "gohweixiong86@gmail.com";
+				$from_name = "Market";
 				
-				$subject = "Danceseem Email Verification";
+				$subject = "Market Email Verification";
 				$message = "
-					Link: http://localhost/danceseen/verify.php?code=$code
+					Link: http://localhost/market/verify.php?code=$code
 				";
 				
 				$result = $this->mailer->sendmail($to_email, $to_name, $from_email, $from_name, $subject, $message);

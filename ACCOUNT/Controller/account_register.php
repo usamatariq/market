@@ -7,12 +7,15 @@
 	
 	require_once $globe->g_root() . '/ACCOUNT/Model/AccountRegistrar.php';
 		
-	// setup variables
+	// New Object Class
 	$accountRegistrar = new AccountRegistrar();
+	
+	// Setup variables
 	$email = "";
 	$password = "";
 	$confirmPassword = "";
 	
+	// Get values into variables
 	if(isset($_POST['account_email'])) {
 		$email = htmlspecialchars($_POST['account_email']);
 	}
@@ -23,10 +26,10 @@
 		$confirmPassword = htmlspecialchars($_POST['account_confirmpassword']);
 	}
 	
-	// attempt to create account
+	// Register Account by registerAccount Method
 	$result = $accountRegistrar->registerAccount($email, $password, $confirmPassword);
 	
-	// redirect according to response
+	// Account Registration Response
 	switch($result) {
 		case ACCOUNT::SUCCESS:
 			header("Location: /market/index.php?response=success"); // REQUEST EMAIL VERIFICATION 
