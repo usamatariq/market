@@ -150,7 +150,7 @@ class AccountKeycode {
 		$code = null;
 		
 		while(1) {
-			$preSHA = $email . mt_rand();
+			$preSHA = $email. mt_rand();
 			$code = sha1($preSHA);
 			
 			if(! $this->checkCodeExists($code)) {

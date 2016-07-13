@@ -51,15 +51,15 @@
 		}
 		
 		// verify email
-		public function verifyEmail($userID, $code) {
+		public function verifyEmail($code) {
 			$result = $this->accountKeycode->retriveKeycode($code);
 			
 			if($result) {
 				// check userID match
 				$retrivedUserID = $this->accountKeycode->getUserID();
-				if($retrivedUserID != $userID) {
-					return $this::CODE_INVALID;
-				}
+				//if($retrivedUserID != $userID) {
+				//	return $this::CODE_INVALID;
+				//}
 				
 				// check code type match
 				$retrivedCodeType = $this->accountKeycode->getCodeType();
@@ -74,7 +74,7 @@
 				// }
 				
 				// set account verified
-				$this->account->setStatus($userID, Account::STATUS_VERIFIED);
+				$this->account->setStatus($retrivedUserID, Account::STATUS_VERIFIED);
 				
 				$this->accountKeycode->deleteCode($code);
 				return $this::SUCCESS;

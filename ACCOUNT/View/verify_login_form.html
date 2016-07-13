@@ -1,4 +1,4 @@
-<form id="loginForm" class="navbar-form navbar-right" action="/danceseen/ACCOUNT/Controller/account_login.php" method="POST">		
+<form id="loginForm" class="navbar-form navbar-right" action="/market/ACCOUNT/Controller/account_login.php" method="POST">		
 			
 	<div id="loginEmailinput" class="form-group">
 		<input id="loginEmail" type="text" placeholder="Email" class="form-control" name="account_email">
@@ -8,9 +8,10 @@
 		<input id="loginPassword" type="password" placeholder="Password" class="form-control" name="account_password">
 	</div>
 	
-	<div id="loginCodeinput" class="form-group">
+	<!--<div id="loginCodeinput" class="form-group">
 		<input id="loginPassword" type="hidden" class="form-control" <?php echo "value=$code" ?> name="verify_code">
 	</div>
+	-->
 	
 	<input type="submit" class="button button-default btn btn-success" value="Login" />
 	<button type="button" class="button button-default btn btn-fail" onClick="parent.location='ACCOUNT/View/account_pw_reset_form.html'"">Forgot My Password =(</button>

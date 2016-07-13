@@ -20,11 +20,13 @@
 	}
 	
 	// attempt to verify email
-	$result = $emailVerifier->verifyEmail($userID, $code);
+	//$result = $emailVerifier->verifyEmail($userID, $code);
+	$result = $emailVerifier->verifyEmail($code);
 	
 	// redirect according to response
 	switch($result) {
 		case EMAILVERIFIER::SUCCESS:
+			echo "congratzzzz.";
 			header("Location: /market/verify.php?response=success");
 			break;
 		case EMAILVERIFIER::CODE_INVALID:

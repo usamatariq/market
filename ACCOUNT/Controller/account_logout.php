@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require $_SERVER["DOCUMENT_ROOT"] . "/danceseen/COMMON/Globe.php";
+	require $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
 	$globe = new Globe();
 
 	
@@ -14,5 +14,5 @@
 		session_destroy();
 	}
 
-	header("Location: /danceseen/index.php");
+	header("Location: /market/index.php");
 ?>

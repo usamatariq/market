@@ -9,7 +9,7 @@
 	$accountAuth = new AccountAuthenticator();
 	$email = "";
 	$password = "";
-	$code = "";
+	//$code = "";
 	
 	if(isset($_POST['account_email'])) {
 		$email = htmlspecialchars($_POST['account_email']);
@@ -30,6 +30,7 @@
 			// if is valid
 			$status = $accountAuth->checkAccountStatus($userID);
 			$_SESSION['userID'] = $userID;
+			
 			if($status == ACCOUNT::STATUS_VERIFIED) {
 				header("Location: /market/home.php");
 			}

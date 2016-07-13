@@ -46,7 +46,7 @@
 			$to = "Existing User";
 			$subject = "Password Reset";
 			$message = "
-				Link: http://localhost/danceseen/resetpassword.php?code=$emailVerificationCode
+				Link: http://localhost/market/resetpassword.php?code=$emailVerificationCode
 			";
 			
 			$mail = new Mail();

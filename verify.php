@@ -10,7 +10,7 @@
 <!DOCTYPE html>	
 <html>
 <head>
-	<title>Danceseen</title>
+	<title>Market</title>
 	<?php
 		require_once($globe->g_head());
 	?>
@@ -22,7 +22,27 @@
 		require_once($globe->g_guestHeader());
 	?>
 	<div class="container home-tab" style="margin-top:20px;">
-		<?php	
+	<?php	
+
+		//CODE
+		if(isset($_GET['code'])) {
+			$code = htmlspecialchars($_GET['code']);
+			
+			// LOGGED IN
+			if(isset($_SESSION['userID'])) {
+				$location = "/market/ACCOUNT/Controller/account_emailVerification.php?code=" . $code . "&userID=" . $_SESSION['userID'];
+				header("Location: $location");
+			}
+
+			// LOGGED OUT
+			else {
+				$location = "/market/ACCOUNT/Controller/account_emailVerification.php?code=" . $code;
+				header("Location: $location");
+				//require_once $globe->g_root() . '/ACCOUNT/VIEW/verify_login_form.html';
+			}
+		}
+		
+		//RESPONSE
 		if(isset($_GET['response'])) {
 			$response = htmlspecialchars($_GET['response']);
 			switch($response) {
@@ -36,7 +56,8 @@
 					echo "Sorry, your login failed.";
 					break;
 				case "success":
-					echo "congratzzzz.";
+					echo "login please";
+					require_once $globe->g_root() . '/ACCOUNT/VIEW/verify_login_form.html';
 					break;
 				default:
 					echo "wtf.";
@@ -44,22 +65,7 @@
 			}
 		}
 		
-		// if there is a code
-		if(isset($_GET['code'])) {
-			$code = htmlspecialchars($_GET['code']);
-			
-			// if logged in
-			if(isset($_SESSION['userID'])) {
-				$location = "/market/ACCOUNT/Controller/account_emailVerification.php?code=" . $code . "&userID=" . $_SESSION['userID'];
-				header("Location: $location");
-			}
-
-			// else not logged in
-			else {
-				require_once $globe->g_root() . '/ACCOUNT/VIEW/verify_login_form.html';
-			}
-		}
-		
+		//RESPONSE & CODE
 		if(!isset($_GET['code']) && !isset($_GET['response'])) {
 			echo "WTF YO";
 		}
