@@ -9,8 +9,8 @@
 		const PORT = 587;
 		const SMTPSECURE = 'tls';
 		
-		const EMAIL_USERNAME = "danceseen@gmail.com";
-		const EMAIL_PASSWORD = "Projectds2015";
+		const EMAIL_USERNAME = "@gmail.com";
+		const EMAIL_PASSWORD = "";
 		
 		private $mailer;
 		
