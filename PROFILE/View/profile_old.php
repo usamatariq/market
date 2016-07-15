@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once $_SERVER["DOCUMENT_ROOT"] . "/danceseen/COMMON/Globe.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
 	$globe = new Globe();
 	
 	if(!isset($_SESSION['userID'])) {
@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Danceseen - Jobs</title>
+	<title>market - Jobs</title>
 	<?php
 		require_once($globe->g_head());
 	?>

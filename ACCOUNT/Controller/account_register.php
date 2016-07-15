@@ -11,11 +11,19 @@
 	$accountRegistrar = new AccountRegistrar();
 	
 	// Setup variables
+	$firstname ="";
+	$lastname="";
 	$email = "";
 	$password = "";
 	$confirmPassword = "";
 	
 	// Get values into variables
+	if(isset($_POST['account_firstname'])) {
+		$firstname = htmlspecialchars($_POST['account_firstname']);
+	}
+	if(isset($_POST['account_lastname'])) {
+		$lastname = htmlspecialchars($_POST['account_lastname']);
+	}	
 	if(isset($_POST['account_email'])) {
 		$email = htmlspecialchars($_POST['account_email']);
 	}
@@ -27,7 +35,7 @@
 	}
 	
 	// Register Account by registerAccount Method
-	$result = $accountRegistrar->registerAccount($email, $password, $confirmPassword);
+	$result = $accountRegistrar->registerAccount($firstname, $lastname, $email, $password, $confirmPassword);
 	
 	// Account Registration Response
 	switch($result) {

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2016 at 10:43 PM
+-- Generation Time: Jul 16, 2016 at 12:38 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -28,24 +28,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `account` (
   `account_userid` int(11) NOT NULL AUTO_INCREMENT,
-  `account_username` varchar(30) NOT NULL,
+  `account_firstname` varchar(30) NOT NULL,
+  `account_lastname` varchar(30) NOT NULL,
   `account_pw_hash` varchar(255) NOT NULL,
   `account_email` varchar(255) NOT NULL,
   `account_status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`account_userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`account_userid`, `account_username`, `account_pw_hash`, `account_email`, `account_status`) VALUES
-(56, '', '$2y$10$jRTifrwlHRXlLFsj6/nJgeED9d1RsRvlkRJowOEbM1dVbGAzad13G', 'weixiongs86@hotmail.com', 1),
-(57, '', '$2y$10$fvVLs8CHIml03QLQ1IqEauLRf7ZbznyX2qkz.lpTcunCAJHe73foy', 'weixiongaa6@hotmail.com', 1),
-(58, '', '$2y$10$wZkjdBwT9sYlt1wdhilfp.msWFeh3M7PCJy0bQWJ2osx3HWaLL5.O', 'weix1iong86@hotmail.com', 1),
-(59, '', '$2y$10$KfOwwLwgLA7wPPBS7Pp1ROE3ha4p8PrzM44o7N.QlsfsHbYM6OD8u', 'weixionsg86@hotmail.com', 1),
-(60, '', '$2y$10$7H7o5tu3uowfP1XVs2NxfuQYO7/ISAWKJ/TgEAPbrUPKIQThWw5hu', 'weixiongg86@hotmail.com', 1),
-(64, '', '$2y$10$cJ7tX1NW7DRugwAjqLLyLOlrF2lz0oI.4Qxugi5nPawbQ49cbEroC', 'weixiong86@hotmail.com', 1);
+INSERT INTO `account` (`account_userid`, `account_firstname`, `account_lastname`, `account_pw_hash`, `account_email`, `account_status`) VALUES
+(67, 'Rusty', 'Goh', '$2y$10$4OFTkEoofRM23YoTazpZcO4Cachto2E2Ri17B9IbRHJxc0CP8drgq', 'weixiong86@hotmail.com', 1);
 
 -- --------------------------------------------------------
 

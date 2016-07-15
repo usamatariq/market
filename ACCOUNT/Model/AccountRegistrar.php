@@ -21,10 +21,10 @@
 		}
 		
 		// create account
-		public function registerAccount($email, $password, $confirmPassword) {
+		public function registerAccount($firstname, $lastname, $email, $password, $confirmPassword) {
 			
 
-			$accountResponse = $this->account->createAccount($email, $password, $confirmPassword);
+			$accountResponse = $this->account->createAccount($firstname, $lastname, $email, $password, $confirmPassword);
 			
 			if($accountResponse == ACCOUNT::SUCCESS) {
 				$userID = $this->account->getUserIDFromEmail($email);

@@ -16,7 +16,10 @@
 
 			<ul class="nav navbar-nav navbar-right">		
 				<li><a href="inbox.php" 	class="glyphicon glyphicon-envelope" aria-hidden="true"></a></li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['userID'] ?> <b class="caret"></b></a>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
+				<?php 
+				echo $firstname;
+				?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">	
 						
 						<li><a href="/market/edit.php">Account</a></li>

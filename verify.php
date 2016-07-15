@@ -56,7 +56,7 @@
 					echo "Sorry, your login failed.";
 					break;
 				case "success":
-					echo "login please";
+					echo "success! but login please";
 					require_once $globe->g_root() . '/ACCOUNT/VIEW/verify_login_form.html';
 					break;
 				default:

@@ -1,4 +1,8 @@
 <?php 
+	session_start();
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
+	$globe = new Globe();
+	
 	require $globe->g_root() . '/PROFILE/Model/Profile.php';
 	$profile = new Profile();
 	$i=0 ;

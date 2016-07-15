@@ -41,6 +41,8 @@ class Account {
 		
 		if (sizeof($resultArr) == 1) {
 			$this->userID = $resultArr[0]['account_userid'];
+			$this->firstname = $resultArr[0]['account_firstname'];
+			$this->lastname = $resultArr[0]['account_lastname'];
 			$this->passwordHash = $resultArr[0]['account_pw_hash'];
 			$this->email = $resultArr[0]['account_email'];
 			$this->status = $resultArr[0]['account_status'];
@@ -51,37 +53,36 @@ class Account {
 		}
 	}
 	
-	public function createAccount($email, $password, $confirmPassword) {	
-		// check email
-			// valid form
+	public function createAccount($firstname, $lastname, $email, $password, $confirmPassword) {	
+	// EMAIL FORMAT CHECK
 		if(!$this->isValidEmail($email)) {
 			return $this::EMAIL_INVALID;
 		}
-			// if in use
+	// EMAIL EXISTENCE CHECK
 		if(!$this->isEmailAvailable($email)) {
 			return $this::EMAIL_IN_USE;
 		}
-
-		// check password
+	// PASSWORD FORMAT CHECK
 		if(!$this->isValidPassword($password)) {
 			return $this::PASSWORD_INVALID;
-		}
-		
-		// check password match
+		}		
+	// PASSWORD MATCH CHECK
 		if(!$this->isPasswordMatch($password, $confirmPassword)) {
 			return $this::PASSWORD_MISMATCH;
 		}
 		
-		// generate hash
+	// PASSWORD HASH GENERATOR
 		$hash = $this->hashPassword($password);
 		
-		// store in account DB
+	// INSERT INTO DATABASE 
 		$table = 'account';
-		$columns = 'account_userid, account_pw_hash, account_email, account_status';
-		$values = ':account_userid, :account_pw_hash, :account_email, :account_status';
+		$columns = 'account_userid, account_firstname, account_lastname, account_pw_hash, account_email, account_status';
+		$values = ':account_userid, :account_firstname, :account_lastname, :account_pw_hash, :account_email, :account_status';
 		$array = array(
 			
 			'account_userid' => 0,
+			'account_firstname' => $firstname,
+			'account_lastname' => $lastname,
 			'account_pw_hash' => $hash,
 			'account_email' => $email,
 			'account_status' => 0
@@ -103,6 +104,14 @@ class Account {
 	
 	public function getEmail() {
 		return $this->email;
+	}
+	
+	public function getFirstName() {
+		return $this->firstname;
+	}
+	
+	public function getLastName() {
+		return $this->lastname;
 	}
 	
 	public function getPasswordHash() {
@@ -183,7 +192,7 @@ class Account {
 		}
 	}
 
-	// --- RETRIVE FROM DATABASE
+	// --- RETRIEVE FROM DATABASE
 	public function getUserIDFromEmail($email) {
 		$table = 'account';
 		$columns = 'account_userid';
@@ -201,8 +210,7 @@ class Account {
 		return null;
 	}
 	
-	// --- CHECKERS
-		
+	// --- CHECKERS	
 	public function isEmailAvailable($email) {
 		$userID = $this->getUserIDFromEmail($email);
 		if($userID == null) {

@@ -1,12 +1,21 @@
 <?php
 	session_start();
-	require_once $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
+	require_once $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";	
 	$globe = new Globe();
 	
 	if(!isset($_SESSION['userID'])) {
 		$index = $globe->g_root() . "/index.php";
 		header("Location: index.php");
 	}
+?>
+
+<?php	
+	require_once $globe->g_root() . '/ACCOUNT/Model/Account.php';
+	$account = new Account();
+	
+	$account->retriveAccount($_SESSION['userID']);
+	$firstname = $account->getFirstName();
+	$email = $account->getEmail();
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +37,6 @@
 	<div style="margin-top:20px;">
 		<?php require("COMMON/View/carousel.php"); ?>
 	</div>
-	
 	
 	<!-- Page Content -->
 

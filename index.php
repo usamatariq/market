@@ -18,7 +18,7 @@
 	
 <!--<script type='text/javascript' src='/market/js/formValidation.js'></script>-->
 
-	<?php
+<?php
 	
 		// checks for URL parameters (messages to users)
 		if(isset($_GET["response"])){
