@@ -32,7 +32,10 @@
 				
 				$subject = "Market Email Verification";
 				$message = "
-					Link: http://localhost/market/verify.php?code=$code
+				<p>
+				</p>				
+				<a href='http://localhost/market/verify.php?code=$code'>Verify Email</a>
+				<button class='btn btn-danger'>Rent</button>
 				";
 				
 				$result = $this->mailer->sendmail($to_email, $to_name, $from_email, $from_name, $subject, $message);
