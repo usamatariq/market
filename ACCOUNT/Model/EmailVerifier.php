@@ -32,10 +32,43 @@
 				
 				$subject = "Market Email Verification";
 				$message = "
-				<p>
-				</p>				
-				<a href='http://localhost/market/verify.php?code=$code'>Verify Email</a>
-				<button class='btn btn-danger'>Rent</button>
+				<html>
+				<head>
+					<style>
+					.btn {
+					  display: inline-block;
+					  padding: 6px 12px;
+					  margin-bottom: 0;
+					  font-size: 14px;
+					  font-weight: normal;
+					  line-height: 1.42857143;
+					  text-align: center;
+					  white-space: nowrap;
+					  vertical-align: middle;
+					  -ms-touch-action: manipulation;
+						  touch-action: manipulation;
+					  cursor: pointer;
+					  -webkit-user-select: none;
+						 -moz-user-select: none;
+						  -ms-user-select: none;
+							  user-select: none;
+					  background-image: none;
+					  border: 1px solid transparent;
+					  border-radius: 4px;
+					}
+					
+					.btn-danger {
+					  color: #fff;
+					  background-color: #d9534f;
+					  border-color: #d43f3a;
+					}
+					</style>
+					
+				</head>
+				<body>
+					<a href='http://localhost/market/verify.php?code=$code' class='btn btn-danger' role='button'>Verify Email</a>
+				</body>
+				</html>
 				";
 				
 				$result = $this->mailer->sendmail($to_email, $to_name, $from_email, $from_name, $subject, $message);
@@ -57,6 +90,7 @@
 		public function verifyEmail($code) {
 			$result = $this->accountKeycode->retriveKeycode($code);
 			
+		// CODE IS VALID	
 			if($result) {
 				// check userID match
 				$retrivedUserID = $this->accountKeycode->getUserID();
@@ -76,13 +110,22 @@
 					// return $this::CODE_INVALID;
 				// }
 				
-				// set account verified
+				// SET ACCOUNT STATUS
 				$this->account->setStatus($retrivedUserID, Account::STATUS_VERIFIED);
 				
+				// CREATE NEW PROFILE
+				//$account->retriveAccount($_SESSION['userID']);
+				//$firstname = $this->$account->getFirstName();
+				//$lastname = $this->$account->getLastName();
+				//$this->account->createProfile($retrivedUserID, $firstname, $lastname);
+				
+				// DELETE KEYCODE
 				$this->accountKeycode->deleteCode($code);
+				
 				return $this::SUCCESS;
 				
 			}
+		// CODE IS INVALID
 			else {
 				return $this::CODE_INVALID;
 			}

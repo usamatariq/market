@@ -3,12 +3,31 @@
 
 	class Profile {
 		
+		const SUCCESS = 0;
+		const FAILURE = 1;
+		
 		public function __construct() {
 			
 		}
 		
-		public function createProfile() {
-			return null;
+		public function createProfile($userID, $firstname, $lastname) {
+		// INSERT INTO DATABASE 
+		$table = 'profile';
+		$columns = 'profile_userid, profile_firstname, profile_lastname';
+		$values = ':profile_userid, :profile_firstname, :profile_lastname';
+		$array = array(			
+			'profile_userid' => $userID,
+			'profile_firstname' => $firstname,
+			'profile_lastname' => $lastname,
+		);
+		
+		$db = new Database();
+		if($db->insert($table, $columns, $values, $array)) {
+			return $this::SUCCESS;
+		}
+		else {
+			return $this::FAILURE;
+		}
 		}
 		
 		// ---- OLD

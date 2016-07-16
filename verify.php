@@ -29,17 +29,17 @@
 			$code = htmlspecialchars($_GET['code']);
 			
 			// LOGGED IN
-			if(isset($_SESSION['userID'])) {
-				$location = "/market/ACCOUNT/Controller/account_emailVerification.php?code=" . $code . "&userID=" . $_SESSION['userID'];
-				header("Location: $location");
-			}
+			//if(isset($_SESSION['userID'])) {
+			//	$location = "/market/ACCOUNT/Controller/account_emailVerification.php?code=" . $code . "&userID=" . $_SESSION['userID'];
+			//	header("Location: $location");
+			//}
 
 			// LOGGED OUT
-			else {
+			//else {
 				$location = "/market/ACCOUNT/Controller/account_emailVerification.php?code=" . $code;
 				header("Location: $location");
 				//require_once $globe->g_root() . '/ACCOUNT/VIEW/verify_login_form.html';
-			}
+			//}
 		}
 		
 		//RESPONSE

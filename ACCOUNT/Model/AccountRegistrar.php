@@ -33,7 +33,7 @@
 				$emailResponse = $this->emailVerifier->sendEmailVerification($userID, $email);
 				
 				// create profile record				
-				$profileResponse = $this->profile->createProfile($userID);
+				$profileResponse = $this->profile->createProfile($userID, $firstname, $lastname);
 				
 				return ACCOUNT::SUCCESS;
 			}
