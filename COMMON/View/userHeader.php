@@ -1,3 +1,13 @@
+
+<?php	
+	require_once $globe->g_root() . '/ACCOUNT/Model/Account.php';
+	$account = new Account();
+	
+	$account->retriveAccount($_SESSION['userID']);
+	$firstname = $account->getFirstName();
+	$email = $account->getEmail();
+?>
+
 <!-- Nav Fixed Bar-->
 <div class="navbar navbar-default navbar-fixed-top" style="background-color:#fff">
       <div class="container">
@@ -15,22 +25,20 @@
 			
 
 			<ul class="nav navbar-nav navbar-right">		
-				<li><a href="inbox.php" 	class="glyphicon glyphicon-envelope" aria-hidden="true"></a></li>
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
 				<?php 
 				echo $firstname;
 				?> <b class="caret"></b></a>
 					<ul class="dropdown-menu">	
-						
-						<li><a href="/market/edit.php">Account</a></li>
-						<li><a href="/market/PROFILE/View/profile.php">View Portfolio</a></li>
-						<li><a href="/market/edit.php">Edit Portfolio</a></li>
-						<li><a href="#">Help</a></li>
+						<li><a href="/market/PROFILE/View/profile.php">Profile</a></li>
+						<li><a href="/market/inbox.php">Inbox</a></li>
 						<li class="divider"></li>
-						<li><a href="/market/ACCOUNT/Controller/account_logout.php">Logout</a></li>
+						<li><a href="/market/account">Account Setting</a></li>						
+						<li><a href="#">Help</a></li>
+						<li><a href="/market/account/Controller/account_logout.php">Logout</a></li>
 					</ul>
 				</li>
-				<li><button id="jobpost" class="btn btn-danger" style="margin-top:8px;" data-toggle="modal" data-target="#postjob" onclick="setFormSubmitting()">Rent</button></li>
+				<li><button id="jobpost" class="btn btn-danger" style="margin-top:8px;" data-toggle="modal" data-target="#postjob" onclick="setFormSubmitting()">Post</button></li>
 				
 				<form class="navbar-form navbar-right hidden">
 					<div class="form-group">

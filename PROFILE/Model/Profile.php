@@ -62,10 +62,10 @@
 		public function getProfile($userid) {
 			$table = 'profile';
 			$columns = '*';
-			$where = 'userid = :account_userid';
+			$where = 'profile_userid = :profile_userid';
 			
 			$array = array(
-				":account_userid" => $userid
+				":profile_userid" => $userid
 				);
 				
 			$db = new Database();

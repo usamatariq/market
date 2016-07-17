@@ -1,14 +1,25 @@
-<?php 
-	session_start();
-	require_once $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
-	$globe = new Globe();
-	
+<?php 	
 	require $globe->g_root() . '/PROFILE/Model/Profile.php';
 	$profile = new Profile();
 	$i=0 ;
 	$result = $profile->getProfile($_SESSION['userID']);
 	$field = $result[$i];
-		echo '
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>market - Jobs</title>
+	<?php
+		require_once($globe->g_head());
+	?>
+</head>
+<body>
+<?php
+		require_once($globe->g_userHeader());
+?>
+
+<div class="container">
+	<?php	echo '
 			<tr>
             <td>First Name</td>
 			<td><input type	="text" value="'. $field['profile_firstName'] .'" class="form-control"></td>
@@ -21,7 +32,10 @@
 			
 			<tr>
             <td>Birth Date</td>
-			<td><input type	="date" value="'. $field['profile_dob'] .'" class="form-control"></td>
+			<td><input id="birthdate" type="text" value="'. $field['profile_dob'] .'" class="form-control"></td>
+			
+            
+			
 			</tr>
 			
 			<tr>
@@ -42,7 +56,7 @@
 			
 			<tr>
 			<td>Mobile</td>
-			<td><input type	="text" value="'. $field['profile_mobile'] .'" orclass="form-control"></td>
+			<td><input type	="text" value="'. $field['profile_mobile'] .'" class="form-control"></td>
 			</tr>
 			
 			<tr>
@@ -55,4 +69,11 @@
 			<tr><td><button type="submit" class="btn btn-default">Save Changes
 			</button></td></tr>
 			';
-	?>
+?>
+
+	</div>
+</div>
+	
+</body>
+
+</html>

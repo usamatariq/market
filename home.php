@@ -9,14 +9,6 @@
 	}
 ?>
 
-<?php	
-	require_once $globe->g_root() . '/ACCOUNT/Model/Account.php';
-	$account = new Account();
-	
-	$account->retriveAccount($_SESSION['userID']);
-	$firstname = $account->getFirstName();
-	$email = $account->getEmail();
-?>
 
 <!DOCTYPE html>
 <html>
