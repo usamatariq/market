@@ -4,6 +4,10 @@
 	$i=0 ;
 	$result = $profile->getProfile($_SESSION['userID']);
 	$field = $result[$i];
+
+// CONVERT DATE FORMAT	
+	$dob = date_create($field['profile_dob']);
+	$dob = date_format($dob, 'd/m/Y');
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,12 +15,11 @@
 	<title>market - Jobs</title>
 	<?php
 		require_once($globe->g_head());
+		require_once($globe->g_userHeader());
 	?>
 </head>
 <body>
-<?php
-		require_once($globe->g_userHeader());
-?>
+
 
 <div class="container">
 	<?php	echo '
@@ -32,17 +35,7 @@
 			
 			<tr>
             <td>Birth Date</td>
-			<td><input id="birthdate" type="text" value="'. $field['profile_dob'] .'" class="form-control"></td>
-			
-            
-			
-			</tr>
-			
-			<tr>
-			<td>Photo</td>
-			<td><img src="../img/img_rounded.png" alt="..." class="img-rounded">
-			<input type="file" id="exampleInputFile" style="padding:5px;">
-			<p class="help-block">Example block-level help text here.</p></td>
+			<td><input id="birthdate" type="text" value="'. $dob .'" class="form-control"></td>
 			</tr>
 			
 			<tr>

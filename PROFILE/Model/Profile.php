@@ -29,10 +29,7 @@
 			return $this::FAILURE;
 		}
 		}
-		
-		// ---- OLD
-
-		
+			
 		public function set($username, $column, $value) {
 			$table = 'profile';
 			$set = "$column = :$column";
