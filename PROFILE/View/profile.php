@@ -22,20 +22,21 @@
 
 
 <div class="container">
+<form name="jobform" action="/market/profile/Controller/profile_update.php" method="post">
 	<?php	echo '
 			<tr>
             <td>First Name</td>
-			<td><input type	="text" value="'. $field['profile_firstName'] .'" class="form-control"></td>
+			<td><input name="firstname" type	="text" value="'. $field['profile_firstName'] .'" class="form-control"></td>
 			</tr>
 			
 			<tr>
             <td>Last Name</td>
-			<td><input type	="text" value="'. $field['profile_lastName'] .'" class="form-control"></td>
+			<td><input name="lastname" type	="text" value="'. $field['profile_lastName'] .'" class="form-control"></td>
 			</tr>
 			
 			<tr>
             <td>Birth Date</td>
-			<td><input id="birthdate" type="text" value="'. $dob .'" class="form-control"></td>
+			<td><input id="dob" name="dob" type="text" value="'. $dob .'" class="form-control"></td>
 			</tr>
 			
 			<tr>
@@ -49,7 +50,7 @@
 			
 			<tr>
 			<td>Mobile</td>
-			<td><input type	="text" value="'. $field['profile_mobile'] .'" class="form-control"></td>
+			<td><input name="mobile" type	="text" value="'. $field['profile_mobile'] .'" class="form-control"></td>
 			</tr>
 			
 			<tr>
@@ -63,6 +64,7 @@
 			</button></td></tr>
 			';
 ?>
+</form>
 
 	</div>
 </div>

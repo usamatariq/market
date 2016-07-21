@@ -24,11 +24,44 @@
 		$db = new Database();
 		if($db->insert($table, $columns, $values, $array)) {
 			return $this::SUCCESS;
-		}
+			}
 		else {
 			return $this::FAILURE;
+			}
 		}
+		
+		public function updateProfile($userID, $firstname, $lastname, $dob, $mobile) {
+			$globe = new Globe();
+			
+			$table = "profile";
+			$set = 'profile_firstname=:profile_firstname, 
+					profile_lastname=:profile_lastname,  
+					profile_dob=:profile_dob, 
+					profile_mobile=:profile_mobile';
+						
+			$where = 'profile_userid=:profile_userid';
+			$array = array(
+				":profile_userid"=>$userID,
+				":profile_firstname" => $firstname,
+				":profile_lastname" => $lastname,
+				":profile_dob" => $dob,
+				":profile_mobile"=>$mobile
+			);
+			
+			if($globe::IS_TEST) {
+				return true;
+			}
+			else {
+				$db = new Database();
+				if($db->update($table, $set, $where, $array)) {
+					return true;
+				}
+				else {
+					return false;
+				}	
+			}
 		}
+		
 			
 		public function set($username, $column, $value) {
 			$table = 'profile';

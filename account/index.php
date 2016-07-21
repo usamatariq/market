@@ -317,7 +317,7 @@
 <script src="js/bootstrap-datepicker.js"></script>
 <script>
 	
-	$('#birthdate').datepicker({
+	$('#dob').datepicker({
 		 format: "dd/mm/yyyy",
 		startDate: "01-01-1940",
 		autoclose: true,

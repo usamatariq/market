@@ -8,7 +8,7 @@
 				<li style="display:inline;"><a href="terms.php">Terms of Use</a></li>
 				<li style="display:inline;"><a href="privacy.php">Privacy Policy</a></li>
 				<li style="display:inline;"><a href="help.php">Help</a></li>
-				<li style="display:inline;">&copy; Danceseen 2014</li>
+				<li style="display:inline;">&copy; Market 2016</li>
 			</ul>
 		</footer>
 	</div>
