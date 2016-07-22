@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>market - Jobs</title>
+	<title>Market</title>
 	<?php
 		require_once($globe->g_head());
 	?>
@@ -32,8 +32,6 @@
 
 <body>	
 <div class="container" style="margin-top:20px;">
-
-
 <div class="col-md-3 " >       
 	<div class="panel panel-default panel-body" style="padding:0px;border:0px;">
 		<div class="nav-panel" >
@@ -43,124 +41,30 @@
 	
 	<div class="panel panel-default panel-body" style="padding:0px;border:0px;">
 		<div class="nav-panel" >
-			<a href="#account" data-toggle="tab"><div class="nav-tab">General</div></a>
-			<a href="#personal" data-toggle="tab"><div class="nav-tab">Profile</div></a>
+			<a href="#general" data-toggle="tab"><div class="nav-tab">General</div></a>
+			<a href="#security" data-toggle="tab"><div class="nav-tab">Security</div></a>
 			<a href="#portfolio" data-toggle="tab"><div class="nav-tab">Portfolio</div></a>
 		</div>
 	</div>
 </div>
  
  <div class="col-md-7">
- <div class="panel panel-default" style="background-color: #f8f8f8;border:none;padding:0px;">
- <div class="panel-body" style="background-color: #f8f8f8;border:none;padding:0px;">
+ <div class="panel panel-default" style="border:none;padding:0px;">
+ <div class="panel-body" style="padding:0px;">
     <div id="my-tab-content" class="tab-content " style="padding:15px;background-color: #ffffff; border: 1px solid #dddddd;">
 <!--------------------TAB 1---------------------------->	
-        <div class="tab-pane active " id="account">
-		<table class="table">
-		<thead>
-		<tr>
-			<th style="width:30%;">Account Setting</th>
-			<th></th>
-        </tr>
-		</thead>
-			<tbody>					
-				<?php require $globe->g_root() . "/account/view/account.php";?>
-			</tbody>
-		</table>
-		
-		<table class="table">
-		<thead>
-		<tr>
-          <th style="width:30%;">Email Notification</th>
-          <th></th>
-        </tr>
-		</thead>
-		<tbody>
-			
-			<tr>
-			<td>Send me email when:</td>
-			<td>
-			<ul class="bullet-none">
-					<li><input type="checkbox" value=""> Market has new job offers</li>
-					<li><input type="checkbox" value=""> Market has upcoming events</li>
-					<li><input type="checkbox" value=""> Market has great deals.</li>
-					
-				</ul>
-			</td>
-			</tr>
-			
-			<tr>
-			<td>Remind me when:</td>
-			<td>
-			<ul class="bullet-none">
-					<li><input type="checkbox" value=""> I have an upcoming job request.</li>
-					<li><input type="checkbox" value=""> I have been accepted in a job.</li>
-					<li><input type="checkbox" value=""> I have received a new message</li>
-					<li><input type="checkbox" value=""> I have received a new reference request</li>
-					
-				</ul>
-			</td>
-			</tr>
-			
-			
-		</tbody>
-		</table>
-		
-		<table class="table">
-		<thead>
-		<tr>
-          <th style="width:30%;">Privacy Setting</th>
-          <th></th>
-        </tr>
-		</thead>
-		<tbody>
-					
-			<tr>
-			<td>Search</td>
-			<td><input name="notify" type="radio" value="y" checked>
-                <span>Yes</span>
-				<input name="notify" type="radio" value="n">
-                <span>No</span>
-				</td>
-			</tr>
-			
-			
-		</tbody>
-		</table>
-		
-		<table class="table">
-		<thead>
-		<tr>
-          <th style="width:30%;">Others</th>
-          <th></th>
-        </tr>
-		</thead>
-		<tbody>
-			
-			<tr>
-			<td><a href='#' style='color:#d9534f'>Delete Account<a></td>
-			</tr>
-			
-			
-		</tbody>
-		</table>
-		
+        <div class="tab-pane active " id="general">
+							
+			<?php require $globe->g_root() . "/account/view/account.php";?>
+				
 		</div>
 <!--------------------TAB 2---------------------------->        
-		<div class="tab-pane" id="personal">		
-		<table class="table">
-		<thead>
-			<tr>
-			  <th style="width:30%;">Profile</th>
-			  <th></th>
-			</tr>
-		</thead>
-		<tbody>					
-			<?php require $globe->g_root() . "/profile/view/profile.php";?>
-		</tbody>
-		</table>
+		<div class="tab-pane" id="security">									
+			
+			<?php require $globe->g_root() . "/account/view/security.php";?>
+			
 		</div>
-<!--------------------TAB 2----------------------------> 		
+<!--------------------TAB 3----------------------------> 		
 		<div class="tab-pane" id="portfolio">
 		
 		<table class="table">
@@ -317,8 +221,8 @@
 <script src="js/bootstrap-datepicker.js"></script>
 <script>
 	
-	$('#dob').datepicker({
-		 format: "dd/mm/yyyy",
+	$('#date').datepicker({
+		format: "dd-mm-yyyy",
 		startDate: "01-01-1940",
 		autoclose: true,
 	});

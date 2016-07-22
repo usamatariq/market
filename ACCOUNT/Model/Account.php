@@ -45,7 +45,6 @@ class Account {
 			$this->lastname = $resultArr[0]['account_lastname'];
 			$this->passwordHash = $resultArr[0]['account_pw_hash'];
 			$this->email = $resultArr[0]['account_email'];
-			$this->status = $resultArr[0]['account_status'];
 			return true;
 		}
 		else {
@@ -97,6 +96,34 @@ class Account {
 		}
 	}
 		
+	public function updateAccount($userID, $firstname, $lastname) {
+			$globe = new Globe();
+			
+			$table = "account";
+			$set = 'account_firstname=:account_firstname, 
+					account_lastname=:account_lastname';
+						
+			$where = 'account_userid=:account_userid';
+			$array = array(
+				":account_userid"=>$userID,
+				":account_firstname" => $firstname,
+				":account_lastname"=>$lastname
+			);
+			
+			if($globe::IS_TEST) {
+				return true;
+			}
+			else {
+				$db = new Database();
+				if($db->update($table, $set, $where, $array)) {
+					return true;
+				}
+				else {
+					return false;
+				}	
+			}
+		}
+	
 	// --- GETTERS
 	public function getUserID() {
 		return $this->userID;
@@ -113,6 +140,7 @@ class Account {
 	public function getLastName() {
 		return $this->lastname;
 	}
+	
 	
 	public function getPasswordHash() {
 		return $this->passwordHash;

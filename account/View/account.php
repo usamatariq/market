@@ -6,38 +6,57 @@
 	$firstname = $account->getFirstName();
 	$lastname = $account->getLastName();
 	$email = $account->getEmail();
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>market - Jobs</title>
-	<?php
-		require_once($globe->g_head());
-	?>
-</head>
-<body>
-<?php
-		require_once($globe->g_userHeader());
-?>
 
-<div class="container">
+?>
+<form action="/market/account/Controller/profile_update.php" method="post">
+<table class="table">
+	<thead>
+		<tr>
+			<th style="width:30%;">Account Setting</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
 	<?php	echo '
-			<tr>
-            <td>Email</td>
-			<td><fieldset disabled><input type	="text" value="'. $email .'" class="form-control"></fieldset></td>
-			</tr>
+		<tr>
+            <td>First Name</td>
+			<td><input name="firstname" type	="text" value="'. $firstname .'" class="form-control"></td>
+		</tr>
 			
-			<tr>
+		<tr>
+            <td>Last Name</td>
+			<td><input name="lastname" type	="text" value="'. $lastname .'" class="form-control"></td>
+			</tr>
+		<tr>
+			<td>Email</td>
+			<td><fieldset disabled><input type	="text" value="'. $email .'" class="form-control"></fieldset></td>
+		</tr>			
+		<tr>
             <td>Password</td>
 			<td><a href="edit.php">Change Password</a></td>
-			</tr>
-
+		</tr>
 			';
-?>
+	?>
+	</tbody>
+</table>
 
-	</div>
-</div>
+<table class="table">
 	
-</body>
+		<?php require $globe->g_root() . "/account/view/profile.php";?>
+	
+</table>
+</form>
 
-</html>
+<table class="table">
+	<thead>
+		<tr>
+			<th style="width:30%;">Others</th>
+			<th></th>
+        </tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><a href='#' style='color:#d9534f'>Delete Account<a></td>
+		</tr>
+	</tbody>
+</table>

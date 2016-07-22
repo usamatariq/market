@@ -10,15 +10,13 @@
 			
 		}
 		
-		public function createProfile($userID, $firstname, $lastname) {
+		public function createProfile($userID) {
 		// INSERT INTO DATABASE 
 		$table = 'profile';
-		$columns = 'profile_userid, profile_firstname, profile_lastname';
-		$values = ':profile_userid, :profile_firstname, :profile_lastname';
+		$columns = 'profile_userid';
+		$values = ':profile_userid';
 		$array = array(			
 			'profile_userid' => $userID,
-			'profile_firstname' => $firstname,
-			'profile_lastname' => $lastname,
 		);
 		
 		$db = new Database();
@@ -30,20 +28,17 @@
 			}
 		}
 		
-		public function updateProfile($userID, $firstname, $lastname, $dob, $mobile) {
+		public function updateProfile($userID, $dob, $mobile) {
 			$globe = new Globe();
 			
+			
 			$table = "profile";
-			$set = 'profile_firstname=:profile_firstname, 
-					profile_lastname=:profile_lastname,  
-					profile_dob=:profile_dob, 
-					profile_mobile=:profile_mobile';
+			$set = "profile_dob=:profile_dob, 
+					profile_mobile=:profile_mobile";
 						
-			$where = 'profile_userid=:profile_userid';
+			$where = "profile_userid=:profile_userid";
 			$array = array(
 				":profile_userid"=>$userID,
-				":profile_firstname" => $firstname,
-				":profile_lastname" => $lastname,
 				":profile_dob" => $dob,
 				":profile_mobile"=>$mobile
 			);
