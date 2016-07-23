@@ -15,6 +15,6 @@
 		<input id="confirmpassword" type="text" placeholder="Confirm Password" class="form-control register-control" name="account_confirmpassword" />
 	</div>
 	<div class="form-group">	
-		<input type="button" class="button button-default btn btn-success" value="Sign Up" onclick="submitForm(this.form)"/>
+		<input type="button" class="btn btn-success btn-center" value="Sign Up" onclick="submitForm(this.form)"/>
 </form>
 

@@ -88,6 +88,19 @@ margin:0px;
 color:#fff;
 }
 
+.btn-search
+{
+border-left:0px;
+border-radius: 0px 6px 6px 0px;
+}
+
+.btn-center
+{
+width:100%; 
+text-align:center; 
+vertical-align:middle	
+}
+
 .shadow-none {
 box-shadow:none;
  -webkit-box-shadow:none;
@@ -394,11 +407,7 @@ box-shadow:0px;
 
 }
 
-.btn-search
-{
-border-left:0px;
-border-radius: 0px 6px 6px 0px;
-}
+
 
 .nav-tabs-item
 {
