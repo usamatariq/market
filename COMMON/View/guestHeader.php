@@ -9,7 +9,12 @@
           </button>   
         </div>
         <div class="navbar-collapse collapse">
-			<?php require_once $globe->g_root() . '/ACCOUNT/View/account_login_form.html'; ?>      
-        </div><!--/.navbar-collapse -->
+		
+			
+			<?php require_once $globe->g_root() . '/ACCOUNT/View/account_login_form.php'; ?> 
+					
+		
+		</div>
+		
     </div>
 </div>

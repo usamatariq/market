@@ -69,14 +69,31 @@
        </div>
         <div class="col-lg-4">
           <h2>Register</h2>
-			<?php require_once $globe->g_root() . '/ACCOUNT/View/account_register_form.html'; ?>
 		</div>
       </div>
 
       <hr>
       
-    </div> <!-- /container -->
-	
+    </div> 
+	<!------------>
+
+
+<div id="register" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title" id="myModalLabel"><b>Register</b></h4>
+		</div>
+		<div class="modal-body">			
+			<?php require_once $globe->g_root() . '/ACCOUNT/View/account_register_form.php'; ?>
+		</div>	
+	</div>
+  </div>
+</div>
+</div>
+</div>
+
 	<?php require_once($globe->g_footer()); ?>
 
 <script type='text/javascript' src='/market/js/loginformValidation.js'></script>

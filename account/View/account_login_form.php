@@ -9,6 +9,6 @@
 	</div>
 	
 	<input type="submit" class="button button-default btn btn-success" value="Login" />
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register">Register</button>
 	<!--button type="button" class="button button-default btn btn-fail" onClick="parent.location='ACCOUNT/View/account_pw_reset_form.html'"">Forgot My Password =(</button-->
 </form>

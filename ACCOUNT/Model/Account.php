@@ -45,6 +45,7 @@ class Account {
 			$this->lastname = $resultArr[0]['account_lastname'];
 			$this->passwordHash = $resultArr[0]['account_pw_hash'];
 			$this->email = $resultArr[0]['account_email'];
+			$this->status = $resultArr[0]['account_status'];
 			return true;
 		}
 		else {

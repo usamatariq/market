@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home.php"><img class="logo-nav" src="/danceseen/img/logo_large.png" alt="" ></a>
+          <a class="navbar-brand" href="home.php"><img class="logo-nav">	</a>
         </div>
 		
 		// add a logout button
