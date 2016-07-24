@@ -2,18 +2,15 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <meta name='description' content=''>
 <meta name='author' content=''>
-<link rel='shortcut icon' href=''>
+
 
 <!-- CSS -->
+<link href='' rel='shortcut icon' >
 <link href='/market/css/bootstrap.css' rel='stylesheet'>
 <link href='/market/css/market.css' rel='stylesheet'>
 
 <link href='/market/css/bootstrap-datepicker.css' rel='stylesheet'>
 <link href='/market/css/datepicker.css' rel='stylesheet'>
-
-<!-- Documentation extras -->
-<!--link href='/market/css/docs.css' rel='stylesheet'-->
-<!--link href='/market/css/pygments-manni.css' rel='stylesheet'-->
 
 <!-- JavaScript -->
 <script type='text/javascript' src='/market/js/jquery.js'></script>

@@ -1,0 +1,4 @@
+<?php
+
+FB.logout();
+?>
