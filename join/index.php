@@ -18,31 +18,51 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+      alert(response.status);
+	  alert(response.authResponse.accessToken);
+	  alert(response.authResponse.userID);
+	  testAPI();
+	  getFBData();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
+      document.getElementById('status').innerHTML = 'Logged in Facebook but not Market. Please log ' +
         'into this app.';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
+      document.getElementById('status').innerHTML = 'Not Logged onto Facebook. Please log ' +
         'into Facebook.';
     }
   }
 
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
+  //STATUS
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
   }
+  
+  function getFBData () {
+        FB.api('/me', function(data){
+            alert(data.first_name + data.last_name + data.id);
+        })
+    };
+  
+  //LOGIN
+  function fblogin() {
+  FB.login(function(){},{scope: 'public_profile, email'} //there must be scope for permission
+	  
+	);
+  };
+
+  //LOGOUT
+  function fblogout() {
+  FB.logout(function(){}, {scope: 'publish_actions'});
+}
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '{your-app-id}',
+    appId      : '1741439976133091',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -61,10 +81,23 @@
   //
   // These three cases are handled in the callback function.
 
+  //STATUS
   FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
+    statusChangeCallback(response);	
   });
-
+  
+  //LOGIN
+  FB.login(function(response) {
+   // handle the response
+ }, {scope: 'public_profile, email'});//if scope is left blank still can work
+  
+  
+  
+  //LOGOUT
+  FB.logout(function(response) {
+  // user is now logged out
+	});
+  
   };
 
   // Load the SDK asynchronously
@@ -78,14 +111,41 @@
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
+  
+  
+
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
+    alert('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
+		console.log(response);
+      alert('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+  function getFBData () {
+        FB.api('/me?fields=id,name,email,permissions', function(data){
+            console.log(data);
+			
+			$url = 'phpFile.php';
+			//jquery			
+			//$.get($url, {name: data.name});
+			
+			//jquery post
+			$.post($url,
+				{
+					name: data.name,
+					email: data.email
+				},
+			function(data, status){
+				alert("Data: " + data + "\nStatus: " + status);
+			});
+			
+			//directing
+			//window.location.href = 'phpFile.php?name=' + data.name;
+        })
+    };
+  
 </script>
 <html>
 <head>
@@ -144,11 +204,11 @@
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
 		  <div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+		  class="fb-like"
+		  data-share="true"
+		  data-width="450"
+		  data-show-faces="true">
+		</div>
 		</div>
       </div>
 
@@ -172,13 +232,21 @@
 			
 		</div>
 		<div>
-			<button type="button" class="btn btn-primary btn-center" onclick="checkLoginState();">Register with Facebook</button>
+			<button type="button" class="btn btn-primary btn-center" onclick="checkLoginState();">Login Status</button>
 			
 		</div>
-		
-		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-		</fb:login-button>
-
+		<div>
+			<button type="button" class="btn btn-primary btn-center" onclick="fblogin();">Login with Facebook</button>
+			
+		</div>
+		<div>
+			<button scope="public_profile,email" type="button" class="btn btn-primary btn-center" onclick="getFBData();">Get Data</button>
+			
+		</div>
+		<div>
+			<button type="button" class="btn btn-primary btn-center" onclick="fblogout();">Logout</button>
+			
+		</div>
 		<div id="status">
 		</div>
 		
