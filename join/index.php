@@ -8,79 +8,8 @@
 	require_once($globe->g_head());	
 ?>
 <script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      alert(response.status);
-	  alert(response.authResponse.accessToken);
-	  alert(response.authResponse.userID);
-	  testAPI();
-	  getFBData();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Logged in Facebook but not Market. Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Not Logged onto Facebook. Please log ' +
-        'into Facebook.';
-    }
-  }
-
-  //STATUS
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+window.fbAsyncInit = function() {
   
-  function getFBData () {
-        FB.api('/me', function(data){
-            alert(data.first_name + data.last_name + data.id);
-        })
-    };
-  
-  //LOGIN
-  function fblogin() {
-  FB.login(function(){},{scope: 'public_profile, email'} //there must be scope for permission
-	  
-	);
-  };
-
-  //LOGOUT
-  function fblogout() {
-  FB.logout(function(){}, {scope: 'publish_actions'});
-}
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1741439976133091',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.5' // use graph api version 2.5
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
   //STATUS
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);	
@@ -91,62 +20,104 @@
    // handle the response
  }, {scope: 'public_profile, email'});//if scope is left blank still can work
   
-  
-  
   //LOGOUT
   FB.logout(function(response) {
-  // user is now logged out
+  
 	});
   
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
+};
   
   
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    //console.log('statusChangeCallback');
+    //console.log(response);
 
-  function testAPI() {
-    alert('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-		console.log(response);
-      alert('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+	console.log(response.status);
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      
+	  //console.log(response.authResponse.accessToken);
+	  //console.log(response.authResponse.userID);
+	  testAPI();
+
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+	  
+      document.getElementById('status').innerHTML = 'Logged in Facebook but not Market.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+	  
+      document.getElementById('status').innerHTML = 'Not Logged onto Facebook.';
+    }
+  }
+
+  //STATUS
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
     });
   }
-  function getFBData () {
-        FB.api('/me?fields=id,name,email,permissions', function(data){
+ 
+  //LOGIN BUTTON
+  function fblogin() {
+	//LOGIN
+	FB.login(function(response) {
+		
+    if (response.authResponse) {
+     console.log(response);
+	 console.log('Fetching information from facebook');
+     getFBData();
+		} else {
+			console.log(response);
+     console.log('User cancelled login or did not fully authorize.');
+			   }
+	},{scope: 'public_profile, email'});
+	
+  };
+
+//LOGOUT
+  function fblogout() {
+	  console.log('User is logged out');
+	  FB.logout(function(response){
+		  console.log(response);		  
+	  });
+} 
+//TEST
+  function testAPI() {
+    FB.api('/me', function(response) {
+		console.log(response);
+      
+      document.getElementById('status').innerHTML =
+        'Connected., ' + response.name + '!';
+    });
+  }
+  
+   
+  function getFBData() {
+        //GET FACEBOOK DATA
+		FB.api('/me?fields=id,first_name,last_name,email,permissions', function(data){
             console.log(data);
-			
+		
+		//JQUERY FOR PASSING DATA TO PHP
 			$url = 'phpFile.php';
-			//jquery			
-			//$.get($url, {name: data.name});
-			
-			//jquery post
 			$.post($url,
 				{
-					name: data.name,
+					firstname: data.first_name,
+					lastname: data.last_name,
 					email: data.email
 				},
 			function(data, status){
-				alert("Data: " + data + "\nStatus: " + status);
+				console.log("Data: " + data + "\nStatus: " + status);
 			});
-			
-			//directing
+					
 			//window.location.href = 'phpFile.php?name=' + data.name;
         })
     };
   
 </script>
+<script type='text/javascript' src='/market/js/facebook.js'></script>
 <html>
 <head>
 	<title>Market</title>
@@ -174,8 +145,8 @@
 	
 </head>
 
-
 <body>
+
 	<?php require_once($globe->g_guestHeader()); ?>
 	
 	<div class="jumbotron">
@@ -228,10 +199,6 @@
 			<?php require_once $globe->g_root() . '/ACCOUNT/View/account_register_form.php'; ?>	
 		</div>
 		<div>
-			<button type="button" class="btn btn-primary btn-center">Register with Facebook</button>
-			
-		</div>
-		<div>
 			<button type="button" class="btn btn-primary btn-center" onclick="checkLoginState();">Login Status</button>
 			
 		</div>
@@ -240,12 +207,7 @@
 			
 		</div>
 		<div>
-			<button scope="public_profile,email" type="button" class="btn btn-primary btn-center" onclick="getFBData();">Get Data</button>
-			
-		</div>
-		<div>
-			<button type="button" class="btn btn-primary btn-center" onclick="fblogout();">Logout</button>
-			
+			<button type="button" class="btn btn-danger btn-center" onclick="fblogout();">Logout</button>			
 		</div>
 		<div id="status">
 		</div>
@@ -261,5 +223,5 @@
 
 </body>
 <script type='text/javascript' src='/market/js/loginformValidation.js'></script>
-<script type='text/javascript' src='/market/js/facebook.js'></script>
+
 </html> 
