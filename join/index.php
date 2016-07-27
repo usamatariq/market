@@ -60,6 +60,21 @@ window.fbAsyncInit = function() {
     });
   }
  
+  //REGISTER BUTTON
+  function fbregister() {
+	//LOGIN
+	FB.login(function(response) {
+		
+    if (response.authResponse) {
+     console.log(response);
+     registerFBData();
+		} else {
+			console.log(response);
+     console.log('User cancelled login or did not fully authorize.');
+			   }
+	},{scope: 'public_profile, email'});
+	
+  };
   //LOGIN BUTTON
   function fblogin() {
 	//LOGIN
@@ -67,8 +82,7 @@ window.fbAsyncInit = function() {
 		
     if (response.authResponse) {
      console.log(response);
-	 console.log('Fetching information from facebook');
-     getFBData();
+     loginFBData();
 		} else {
 			console.log(response);
      console.log('User cancelled login or did not fully authorize.');
@@ -94,14 +108,34 @@ window.fbAsyncInit = function() {
     });
   }
   
-   
-  function getFBData() {
+  function loginFBData() {
         //GET FACEBOOK DATA
 		FB.api('/me?fields=id,first_name,last_name,email,permissions', function(data){
             console.log(data);
 		
 		//JQUERY FOR PASSING DATA TO PHP
-			$url = 'phpFile.php';
+			$url = 'FBregister.php';
+			$.post($url,
+				{
+					firstname: data.first_name,
+					lastname: data.last_name,
+					email: data.email
+				},
+			function(data, status){
+				console.log("Data: " + data + "\nStatus: " + status);
+			});
+					
+			//window.location.href = 'phpFile.php?name=' + data.name;
+        })
+    };
+   
+  function registerFBData() {
+        //GET FACEBOOK DATA
+		FB.api('/me?fields=id,first_name,last_name,email,permissions', function(data){
+            console.log(data);
+		
+		//JQUERY FOR PASSING DATA TO PHP
+			$url = 'FBregister.php';
 			$.post($url,
 				{
 					firstname: data.first_name,
@@ -199,16 +233,12 @@ window.fbAsyncInit = function() {
 			<?php require_once $globe->g_root() . '/ACCOUNT/View/account_register_form.php'; ?>	
 		</div>
 		<div>
-			<button type="button" class="btn btn-primary btn-center" onclick="checkLoginState();">Login Status</button>
-			
+			<button type="button" class="btn btn-primary btn-center" onclick="fbregister();">Register with Facebook</button>			
 		</div>
 		<div>
-			<button type="button" class="btn btn-primary btn-center" onclick="fblogin();">Login with Facebook</button>
-			
+			<button type="button" class="btn btn-primary btn-center" onclick="fblogin();">Login with Facebook</button>			
 		</div>
-		<div>
-			<button type="button" class="btn btn-danger btn-center" onclick="fblogout();">Logout</button>			
-		</div>
+		
 		<div id="status">
 		</div>
 		

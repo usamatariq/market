@@ -23,7 +23,6 @@
 		// create account
 		public function registerAccount($firstname, $lastname, $email, $password, $confirmPassword) {
 			
-
 			$accountResponse = $this->account->createAccount($firstname, $lastname, $email, $password, $confirmPassword);
 			
 			if($accountResponse == ACCOUNT::SUCCESS) {
@@ -31,6 +30,25 @@
 				
 				// send email verification
 				$emailResponse = $this->emailVerifier->sendEmailVerification($userID, $email);
+				
+				// create profile record				
+				$profileResponse = $this->profile->createProfile($userID, $firstname, $lastname);
+				
+				return ACCOUNT::SUCCESS;
+			}
+			else {
+				return $accountResponse;
+			}
+		}
+		
+		// create account
+		public function registerFBAccount($firstname, $lastname, $email) {
+			
+
+			$accountResponse = $this->account->createFBAccount($firstname, $lastname, $email);
+			
+			if($accountResponse == ACCOUNT::SUCCESS) {
+				$userID = $this->account->getUserIDFromEmail($email);
 				
 				// create profile record				
 				$profileResponse = $this->profile->createProfile($userID, $firstname, $lastname);

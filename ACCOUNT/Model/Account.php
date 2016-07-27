@@ -21,8 +21,9 @@ class Account {
 	
 	const STATUS_UNVERIFIED = 0;
 	const STATUS_VERIFIED = 1;
-	const STATUS_SUSPENDED = 2;
-	const STATUS_CLOSED = 3;
+	const STATUS_FBVERIFIED = 2;
+	const STATUS_SUSPENDED = 3;
+	const STATUS_CLOSED = 4;
 	
 	public function __construct() {
 	}
@@ -85,7 +86,7 @@ class Account {
 			'account_lastname' => $lastname,
 			'account_pw_hash' => $hash,
 			'account_email' => $email,
-			'account_status' => 0
+			'account_status' => $this::STATUS_UNVERIFIED
 		);
 		
 		$db = new Database();
@@ -96,7 +97,39 @@ class Account {
 			return $this::FAILURE;
 		}
 	}
+	
+	public function createFBAccount($firstname, $lastname, $email) {	
+	// EMAIL FORMAT CHECK
+		if(!$this->isValidEmail($email)) {
+			return $this::EMAIL_INVALID;
+		}
+	// EMAIL EXISTENCE CHECK
+		if(!$this->isEmailAvailable($email)) {
+			return $this::EMAIL_IN_USE;
+		}
 		
+	// INSERT INTO DATABASE 
+		$table = 'account';
+		$columns = 'account_userid, account_firstname, account_lastname, account_email, account_status';
+		$values = ':account_userid, :account_firstname, :account_lastname, :account_email, :account_status';
+		$array = array(
+			
+			'account_userid' => 0,
+			'account_firstname' => $firstname,
+			'account_lastname' => $lastname,
+			'account_email' => $email,
+			'account_status' => $this::STATUS_FBVERIFIED
+		);
+		
+		$db = new Database();
+		if($db->insert($table, $columns, $values, $array)) {
+			return $this::SUCCESS;
+		}
+		else {
+			return $this::FAILURE;
+		}
+	}	
+	
 	public function updateAccount($userID, $firstname, $lastname) {
 			$globe = new Globe();
 			
