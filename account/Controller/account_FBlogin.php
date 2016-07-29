@@ -5,11 +5,10 @@
 
 	require_once $globe->g_root() . "/ACCOUNT/Model/AccountAuthenticator.php";
 	
-	// setup variables
-	$accountAuth = new AccountAuthenticator();
+	//VARIABLES
+	
 	$email = "";
-	$password = "";
-	//$code = "";
+
 	
 	if(isset($_POST['account_email'])) {
 		$email = htmlspecialchars($_POST['account_email']);
@@ -29,6 +28,8 @@
 		if($userID != null) {
 			// if is valid
 			$status = $accountAuth->checkAccountStatus($userID);
+			
+			//SET SESSION
 			$_SESSION['userID'] = $userID;
 			
 			if($status == ACCOUNT::STATUS_VERIFIED) {

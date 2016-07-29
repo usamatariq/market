@@ -112,9 +112,10 @@ window.fbAsyncInit = function() {
         //GET FACEBOOK DATA
 		FB.api('/me?fields=id,first_name,last_name,email,permissions', function(data){
             console.log(data);
+		//window.location.href = 'FBlogin.php?firstname=' + data.first_name + '&lastname=' + data.last_name + '&email=' + data.email;
 		
 		//JQUERY FOR PASSING DATA TO PHP
-			$url = 'FBregister.php';
+			$url = 'FBlogin.php';
 			$.post($url,
 				{
 					firstname: data.first_name,
@@ -123,8 +124,14 @@ window.fbAsyncInit = function() {
 				},
 			function(data, status){
 				console.log("Data: " + data + "\nStatus: " + status);
+			
+			if (data='success') {
+				console.log("SUCCESS");
+				window.location.href = 'http://localhost/market/home.php'
+			}
+			
 			});
-					
+
 			//window.location.href = 'phpFile.php?name=' + data.name;
         })
     };
@@ -132,7 +139,8 @@ window.fbAsyncInit = function() {
   function registerFBData() {
         //GET FACEBOOK DATA
 		FB.api('/me?fields=id,first_name,last_name,email,permissions', function(data){
-            console.log(data);
+            
+			console.log(data);
 		
 		//JQUERY FOR PASSING DATA TO PHP
 			$url = 'FBregister.php';
@@ -145,7 +153,6 @@ window.fbAsyncInit = function() {
 			function(data, status){
 				console.log("Data: " + data + "\nStatus: " + status);
 			});
-					
 			//window.location.href = 'phpFile.php?name=' + data.name;
         })
     };

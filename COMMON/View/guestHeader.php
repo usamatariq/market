@@ -9,12 +9,18 @@
           </button>   
         </div>
         <div class="navbar-collapse collapse">
-		
-			
-			<?php require_once $globe->g_root() . '/ACCOUNT/View/account_login_form.php'; ?> 
-					
-		
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#loginModal">Login</button>	
+				</li>
+				<li>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">Register</button>
+				</li>
+
+			</ul>	 
 		</div>
+		
+		
 		
     </div>
 </div>

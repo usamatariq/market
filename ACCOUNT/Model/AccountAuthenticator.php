@@ -26,6 +26,18 @@
 			return null;			
 		}
 		
+		public function FBauthenticate($email) {
+			$userID = $this->account->getUserIDFromEmail($email);
+			
+			$this->account->retriveAccount($userID);
+			
+			if($userID != null) {
+					return $userID;				
+			}
+			
+			return null;			
+		}
+		
 		public function checkAccountStatus($userID) {
 			return $this->account->getStatus();
 		}
