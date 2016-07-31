@@ -255,10 +255,7 @@ window.fbAsyncInit = function() {
 				<div class="modal-body">								
 			
 					<?php require_once $globe->g_root() . '/ACCOUNT/View/account_login_form.php'; ?> 
-						
-				</div>
-				<div>
-					
+				
 					<button type="button" class="btn btn-primary btn-center" onclick="fblogin();">Login with Facebook</button>			
 				
 					
@@ -277,8 +274,7 @@ window.fbAsyncInit = function() {
 				</div>
 				<div class="modal-body">			
 					<?php require_once $globe->g_root() . '/ACCOUNT/View/account_register_form.php'; ?>	
-				</div>
-				<div>
+				
 					<button type="button" class="btn btn-primary btn-center" onclick="fbregister();">Register with Facebook</button>
 					
 				</div>

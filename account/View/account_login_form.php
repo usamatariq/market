@@ -7,7 +7,7 @@
 			<input id="loginPassword" type="password" placeholder="Password" class="form-control register-control" name="account_password">
 		</div>
 		<div class="form-group">
-			<input id="login" type="submit" class="button button-default btn btn-success" value="Login" />
+			<input id="login" type="submit" class="btn btn-success btn-center" value="Login" />
 		</div>
 </form>
 	

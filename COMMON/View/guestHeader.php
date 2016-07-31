@@ -11,10 +11,11 @@
         <div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#loginModal">Login</button>	
+					<button type="button" class="btn btn-primary " style="" data-toggle="modal" data-target="#loginModal">  Login  </button>	
 				</li>
+				
 				<li>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">Register</button>
+					<button type="button" class="btn btn-primary" style="" data-toggle="modal" data-target="#registerModal">Register</button>
 				</li>
 
 			</ul>	 

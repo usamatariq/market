@@ -38,7 +38,7 @@
 						<li><a href="/market/account/Controller/account_logout.php">Logout</a></li>
 					</ul>
 				</li>
-				<li><button id="jobpost" class="btn btn-danger" style="margin-top:8px;" data-toggle="modal" data-target="#postjob" onclick="setFormSubmitting()">Post</button></li>
+				<li><button id="jobpost" class="btn btn-danger" style="" data-toggle="modal" data-target="#postjob" onclick="setFormSubmitting()">Post</button></li>
 				
 				<form class="navbar-form navbar-right hidden">
 					<div class="form-group">

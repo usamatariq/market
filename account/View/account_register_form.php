@@ -16,6 +16,6 @@
 	</div>
 	<div class="form-group">	
 		<input type="button" class="btn btn-success btn-center" value="Sign Up" onclick="submitForm(this.form)"/>
-	
+	</div>
 </form>
 
