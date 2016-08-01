@@ -1,30 +1,33 @@
-<?php
+<?php	
 	session_start();
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
 	$globe = new Globe();
-
+	
 	require_once $globe->g_root() . "/ACCOUNT/Model/AccountAuthenticator.php";
+	$accountAuth = new AccountAuthenticator();
 	
-	//VARIABLES
-	
+	// Setup variables
+	$firstname ="";
+	$lastname="";
 	$email = "";
+	$password = "";
+	$confirmPassword = "";
+	
+	// Get values into variables
+	if(isset($_POST['firstname'])) {
+		$firstname = htmlspecialchars($_POST['firstname']);
+	}
+	if(isset($_POST['lastname'])) {
+		$lastname = htmlspecialchars($_POST['lastname']);
+	}	
+	if(isset($_POST['email'])) {
+		$email = htmlspecialchars($_POST['email']);
+	}
 
-	
-	if(isset($_POST['account_email'])) {
-		$email = htmlspecialchars($_POST['account_email']);
-	}
-	if(isset($_POST['account_password'])) {
-		$password = htmlspecialchars($_POST['account_password']);
-	}
-	if(isset($_POST['verify_code'])) {
-		$code = htmlspecialchars($_POST['verify_code']);
-	}
-	
 	// AUTHENTICATION 
-	$userID = $accountAuth->authenticate($email, $password);
+	$userID = $accountAuth->FBauthenticate($email);
 	
 	// STANDARD LOGIN
-	if(!isset($_POST['verify_code'])) {
 		if($userID != null) {
 			// if is valid
 			$status = $accountAuth->checkAccountStatus($userID);
@@ -32,27 +35,16 @@
 			//SET SESSION
 			$_SESSION['userID'] = $userID;
 			
-			if($status == ACCOUNT::STATUS_VERIFIED) {
-				header("Location: /market/home.php");
+			if($status == ACCOUNT::STATUS_FBVERIFIED||ACCOUNT::STATUS_VERIFIED) {
+				//header("Location: /market/home.php");
+				echo ('success');
 			}
 			else {
-				header("Location: /market/verify.php?response=notify");
+				echo ('notify');
 			}
-		}
+		} 
 		else {
-			header("Location: /market/index.php?response=login_fail");
+			echo ('login fail');
 		}
-	}
 
-	// VERIFICATION LOGIN
-	else {
-		if($userID != null) {
-			$_SESSION['userID'] = $userID;
-			header("Location: /market/verify.php?code=$code");
-		}
-		else {
-			header("Location: /market/verify.php?code=$code&response=login_failed");
-		}
-	}
-	
 ?>

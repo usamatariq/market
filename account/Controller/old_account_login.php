@@ -5,11 +5,10 @@
 
 	require_once $globe->g_root() . "/ACCOUNT/Model/AccountAuthenticator.php";
 	
-	// setup variables
-	$accountAuth = new AccountAuthenticator();
+	//VARIABLES
+	
 	$email = "";
-	$password = "";
-	$code = "";
+
 	
 	if(isset($_POST['account_email'])) {
 		$email = htmlspecialchars($_POST['account_email']);
@@ -21,11 +20,8 @@
 		$code = htmlspecialchars($_POST['verify_code']);
 	}
 	
-	
 	// AUTHENTICATION 
 	$userID = $accountAuth->authenticate($email, $password);
-	
-	
 	
 	// STANDARD LOGIN
 	if(!isset($_POST['verify_code'])) {
@@ -47,8 +43,6 @@
 			header("Location: /market/index.php?response=login_fail");
 		}
 	}
-		
-		
 
 	// VERIFICATION LOGIN
 	else {
