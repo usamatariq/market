@@ -93,46 +93,15 @@
 	
 	
 	
-	<?php require_once($globe->g_footer()); ?>
+	<?php 
+	//FOOTER
+	require_once($globe->g_footer()); 
 
-	<!--LOGIN MODAL-->
-	<div id="loginModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content col-md-10">
-			  <div class="modal-header" >
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel"><b>Login</b></h4>
-				</div>
-				<div class="modal-body">								
-			
-					<?php require_once $globe->g_root() . '/ACCOUNT/View/account_login_form.php'; ?> 
-				
-					<button type="button" class="btn btn-primary btn-center" onclick="fblogin();">Login with Facebook</button>			
-				
-					
-				</div>
-			</div>
-		</div>
-	</div>
+	//MODAL
+	require_once $globe->g_root() . "/COMMON/view/loginModal.php";
+	require_once $globe->g_root() . "/COMMON/view/registerModal.php";
+	?>
 	
-	<!--REGISTER MODAL-->
-	<div id="registerModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content col-md-10">
-			  <div class="modal-header" >
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel"><b>Register</b></h4>
-				</div>
-				<div class="modal-body">			
-					<?php require_once $globe->g_root() . '/ACCOUNT/View/account_register_form.php'; ?>	
-				
-					<button type="button" class="btn btn-primary btn-center" onclick="fbregister();">Register with Facebook</button>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
 </body>
 <script type='text/javascript' src='/market/js/loginformValidation.js'></script>
 

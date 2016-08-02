@@ -7,7 +7,6 @@
 		$index = $globe->g_root() . "/index.php";
 		header("Location: index.php");
 	}
-
 ?>
 
 <!DOCTYPE html>

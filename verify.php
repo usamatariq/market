@@ -8,6 +8,10 @@
 ?>
 
 <!DOCTYPE html>	
+
+<script type='text/javascript' src='/market/js/fblogin.js'></script>
+<script type='text/javascript' src='/market/js/facebook.js'></script>
+
 <html>
 <head>
 	<title>Market</title>
@@ -72,6 +76,13 @@
 	?>
 	</div>
 	
-	<?php require_once($globe->g_footer()); ?>
+	<?php 
+	//FOOTER
+	require_once($globe->g_footer()); 
+
+	//MODAL
+	require_once $globe->g_root() . "/COMMON/view/loginModal.php";
+	require_once $globe->g_root() . "/COMMON/view/registerModal.php";
+	?>
 </body>
 </html> 
