@@ -82,12 +82,10 @@
 								'. $jobtype_name .'
                                 <p></p>
                             </div>
-							
-					
-					
-						<div class="hidden">
-							<button id="'. $field['job_id'] .'" type="button" class="jobtab" value="'. $field['job_id'] .'" >View Job</button>
-						</div>
+			
+							<div class="hidden">
+								<button id="'. $field['job_id'] .'" type="button" class="jobtab" value="'. $field['job_id'] .'" >View Job</button>
+							</div>
 							
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
@@ -99,6 +97,12 @@
                                     <span class="glyphicon glyphicon-star"></span>
                                 </p>
                             </div>
+							<div class="job-tab-footer" style="color:#A4A4A4;font-size:12px;">
+								<div style="float:left;">
+									<p>posted by ' . $field['job_poster_id'] . ' Expiry date:  ' . $field['job_expirydate'] . ' </p>
+								</div>
+									'.$int.'
+							</div>
 
                     </div>
 					</a>

@@ -9,8 +9,8 @@
 
 <!DOCTYPE html>	
 
-<script type='text/javascript' src='/market/js/fblogin.js'></script>
-<script type='text/javascript' src='/market/js/facebook.js'></script>
+<script type='text/javascript' src='/market/js/fbAccount.js'></script>
+<script type='text/javascript' src='/market/js/fbInitial.js'></script>
 
 <html>
 <head>
@@ -61,7 +61,10 @@
 					break;
 				case "success":
 					echo "success! but login please";
-					require_once $globe->g_root() . '/ACCOUNT/VIEW/verify_login_form.html';
+					require_once $globe->g_root() . '/ACCOUNT/VIEW/account_login_form.php';
+					break;
+				case "emailinuse":
+					echo "your email seems to be in used";
 					break;
 				default:
 					echo "wtf.";

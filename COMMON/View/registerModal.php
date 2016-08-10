@@ -8,7 +8,7 @@
 				<div class="modal-body">			
 					<?php require_once $globe->g_root() . '/ACCOUNT/View/account_register_form.php'; ?>	
 				
-					<button type="button" class="btn btn-primary btn-center" onclick="fbregister();">Register with Facebook</button>
+					
 					
 				</div>
 			</div>

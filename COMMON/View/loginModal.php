@@ -9,7 +9,7 @@
 			
 					<?php require_once $globe->g_root() . '/ACCOUNT/View/account_login_form.php'; ?> 
 				
-					<button type="button" class="btn btn-primary btn-center" onclick="fblogin();">Login with Facebook</button>			
+								
 				
 					
 				</div>

@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Market</title>
+<title>Market</title>
 	<?php
 		require_once($globe->g_head());
 	?>
@@ -27,11 +27,9 @@
 <div class="container" style="">
 	
 	<div style="margin-top:20px;">
-		<?php require("COMMON/View/carousel.php"); ?>
+		<?php require("common/view/carousel.php"); ?>
 	</div>
 	
-	<!-- Page Content -->
-
     <div class="row" style="margin-top:20px;">
         <div class="col-md-3">
             <div class="list-group">
@@ -88,22 +86,16 @@
 		
             <div class="row" style="margin-top:20px;">
                 <?php 
-						require("JOB/View/rent_list.php");
-				?>
-				
-				
-
-                    
-
-                </div>
+						require("job/View/rent_list.php");
+				?>     
+            </div>
 
         </div>
 
     </div>	
 			
 </div>					
-
-<?php require("JOB/View/job_post.php"); ?>	
+	
 <?php require_once($globe->g_footer()); ?>
 </body>
 
@@ -112,7 +104,8 @@
 <script>
 
 $(document).ready(function(){
-	
+
+//NEW WINDOW	
 	$(".jobtab").click(function(){ 
 		var jobview = $(this).attr("id");
 		
@@ -120,26 +113,26 @@ $(document).ready(function(){
 	});
 	
 	
-//For Job Unapply	
+//UNAPPLY	
 	$(".btn-unapply").click(function(){ 
 		var jobID = $(this).val();
 		
 		alert(jobID);
 		
 		$.post('Controller/job_unapply.php', {
-		id:jobID
+			id:jobID
 		}, function(data,status){
 		alert(data);
 		});
 	});
 	
-//For Job Removal	
+//REMOVAL	
 	$(".btn-remove").click(function(){ 
 	alert("haha");
 		var jobID = $(this).val();
 
 		$.post('Controller/job_remove.php', {
-		id:jobID
+			id:jobID
 		}, function(data,status){
 alert(data);
 		});

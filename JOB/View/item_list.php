@@ -23,7 +23,7 @@
 	date_default_timezone_set('Asia/Singapore');//to shift to head.php
 ?>
 			
-<div id="my-tab-content" class="" >	
+<div id="my-tab-content">	
 
 <?php	
 	
@@ -41,7 +41,7 @@
 			
 			$jobtype_name = $job->getJobtypeFromTypeid($field['job_type_id']);
 			
-			//Date Setting
+			//DATE SETUP
 			$jobdate = date_create($field['job_enddate']);
 			$jobdateOut = date_format($jobdate, 'jS F Y');
 			$date = date_create($field['job_date']);
@@ -67,7 +67,8 @@
 			
 			echo '
 			
-				<div class="job-tab">									
+			<div class="panel panel-default">
+				<div class="panel-body">
 					<a class="jobtab" id="'. $field['job_id'].'">				
 						<div class="job-tab-content">
 							<h3 class="margin-none title">'. $field['job_title'] . '</h3>
@@ -77,7 +78,7 @@
 						</div>	
 						<div class="job-tab-footer" style="color:#A4A4A4;font-size:12px;">
 							<div style="float:left;">
-								<p>posted by ' . $field['job_poster_id'] . ' Expiry date:  ' . $field['job_expirydate'] . '</p>
+								<p>posted by ' . $field['job_poster_id'] . ' Expiry date:  ' . $field['job_expirydate'] . ' </p>
 							</div>
 								'.$int.'
 						</div>
@@ -85,8 +86,9 @@
 					
 					<div class="hidden">
 					<button id="'. $field['job_id'] .'" type="button" class="jobtab" value="'. $field['job_id'] .'" >View Job</button>
-					</div>	
+					</div>
 				</div>
+			</div>
 		
 				';			
 			

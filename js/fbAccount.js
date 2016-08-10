@@ -99,7 +99,8 @@ window.fbAsyncInit = function() {
   }
   
   function loginFBData() {
-        //GET FACEBOOK DATA
+        
+		//GET FACEBOOK DATA
 		FB.api('/me?fields=id,first_name,last_name,email,permissions', function(data){
             console.log(data);
 		
@@ -126,7 +127,8 @@ window.fbAsyncInit = function() {
     };
    
   function registerFBData() {
-        //GET FACEBOOK DATA
+        
+		//GET FACEBOOK DATA
 		FB.api('/me?fields=id,first_name,last_name,email,permissions', function(data){
             
 			console.log(data);
@@ -141,11 +143,8 @@ window.fbAsyncInit = function() {
 				},
 			function(data, status){
 				console.log("Data: " + data + "\nStatus: " + status);
-				
-				if (status='success') {
-				console.log("SUCCESS");
-				window.location.href = 'http://localhost/market/verify.php?response=success'
-			}
+			
+					window.location.href = 'http://localhost/market/verify.php?response=' + data
 				
 			});
 			

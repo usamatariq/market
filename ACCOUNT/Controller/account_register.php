@@ -40,22 +40,22 @@
 	// Account Registration Response
 	switch($result) {
 		case ACCOUNT::SUCCESS:
-			header("Location: /market/index.php?response=success"); // REQUEST EMAIL VERIFICATION 
+			header("Location: /market/verify.php?response=verifyemail"); // REQUEST EMAIL VERIFICATION 
 			break;
 		case ACCOUNT::EMAIL_INVALID:
-			header("Location: /market/index.php?response=emailinvalid");
+			header("Location: /market/verify.php?response=emailinvalid");
 			break;
 		case ACCOUNT::EMAIL_IN_USE:
-			header("Location: /market/index.php?response=emailinuse");
+			header("Location: /market/verify.php?response=emailinuse");
 			break;
 		case ACCOUNT::PASSWORD_MISMATCH:
-			header("Location: /market/index.php?response=passwordmismatch");
+			header("Location: /market/verify.php?response=passwordmismatch");
 			break;
 		case ACCOUNT::PASSWORD_INVALID:
-			header("Location: /market/index.php?response=passwordinvalid");
+			header("Location: /market/verify.php?response=passwordinvalid");
 			break;
 		default:
-			header("Location: /market/index.php?response=error"); // SORRY =(
+			header("Location: /market/verify.php?response=error"); 
 			break;
 	}
 ?>

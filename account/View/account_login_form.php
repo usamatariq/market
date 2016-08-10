@@ -9,6 +9,9 @@
 		<div class="form-group">
 			<input id="login" type="submit" class="btn btn-success btn-center" value="Login" />
 		</div>
+		<div class="form-group">
+		<button type="button" class="btn btn-primary btn-center" onclick="fblogin();">Login with Facebook</button>
+		</div>
 </form>
 	
 	<!--button type="button" class="button button-default btn btn-fail" onClick="parent.location='ACCOUNT/View/account_pw_reset_form.html'"">Forgot My Password =(</button-->

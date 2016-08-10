@@ -4,15 +4,13 @@
 	
 	require_once $globe->g_root() . '/ACCOUNT/Model/AccountRegistrar.php';
 		
-	// New Object Class
+	//OBJECT CLASS
 	$accountRegistrar = new AccountRegistrar();
 	
-	// Setup variables
+	//SETUP VARIABLES
 	$firstname ="";
 	$lastname="";
 	$email = "";
-	$password = "";
-	$confirmPassword = "";
 	
 	// Get values into variables
 	if(isset($_POST['firstname'])) {
@@ -33,27 +31,21 @@
 	switch($result) {
 		case ACCOUNT::SUCCESS:
 			echo 'success';
-			//header("Location: /market/index.php?response=success"); // REQUEST EMAIL VERIFICATION 
 			break;
 		case ACCOUNT::EMAIL_INVALID:
-			echo 'email invalid';
-			//header("Location: /market/index.php?response=emailinvalid");
+			echo 'emailinvalid';
 			break;
 		case ACCOUNT::EMAIL_IN_USE:
-			echo 'email in use';
-			//header("Location: /market/index.php?response=emailinuse");
+			echo 'emailinuse';			
 			break;
 		case ACCOUNT::PASSWORD_MISMATCH:
-			echo 'password mismatch';
-			//header("Location: /market/index.php?response=passwordmismatch");
+			echo 'passwordmismatch';
 			break;
 		case ACCOUNT::PASSWORD_INVALID:
-			echo 'password invalid';
-			//header("Location: /market/index.php?response=passwordinvalid");
+			echo 'passwordinvalid';
 			break;
 		default:
 			echo 'error';
-			//header("Location: /market/index.php?response=error"); // SORRY =(
 			break;
 	}
 ?>

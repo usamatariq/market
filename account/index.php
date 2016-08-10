@@ -10,9 +10,10 @@
 ?>
 
 <!DOCTYPE html>
+
 <html>
 <head>
-	<title>Market</title>
+	<title>Market - Account</title>
 	<?php
 		require_once($globe->g_head());
 	?>

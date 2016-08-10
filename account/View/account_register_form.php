@@ -17,5 +17,8 @@
 	<div class="form-group">	
 		<input type="button" class="btn btn-success btn-center" value="Sign Up" onclick="submitForm(this.form)"/>
 	</div>
+	<div class="form-group">
+		<button type="button" class="btn btn-primary btn-center" onclick="fbregister();">Register with Facebook</button>
+	</div>
 </form>
 

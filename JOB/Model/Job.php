@@ -24,7 +24,7 @@
 				"job_pay" => $pay,
 				"job_startdate" => $startdate,
 				"job_starttime" => $starttime,
-				"job_enddate" => $enddate,
+				"job_enddate" => $expiry,
 				"job_endtime" => $endtime,
 				"job_venue"=> $venue,
 				"job_description" => $description,
@@ -103,7 +103,7 @@
 
 		function getJobs($search, $jobtype, $sort, $page=0, $limit=0) {
 			
-			//search methods
+			//SEARCH
 			$parts = explode(" ",trim($search));
 			$clauses=array();
 			
@@ -115,7 +115,7 @@
 			$clausetext=implode('AND' ,$clausestext);
 			$clausetitle=implode('AND' ,$clausestitle);
 			
-			//filter methods
+			//FILTER
 			$type = " job_type_id = '" .$jobtype."'";
 			$status =" job_status = '1'";
 			$today = date("Y-m-d");
@@ -134,8 +134,8 @@
 			$columns = '*';
 			$where = $clause;
 			
+			// DATA
 			$db = new Database();
-			
 			$resultArr = $db->search($table, $columns, $where, $sort, $page, $limit);
 	
 			if (is_array($resultArr)) {

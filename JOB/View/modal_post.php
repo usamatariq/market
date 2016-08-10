@@ -1,4 +1,4 @@
-<div id="postjob" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+<div id="modalpost" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
 <div class="modal-dialog modal-sm">
 <div class="modal-content col-md-10 col-md-offset-1">
 	<div class="modal-header ">
@@ -7,23 +7,23 @@
     </div>
     
 	<div class="modal-body">
-		<form name="jobform" action="/danceseen/JOB/Controller/job_add.php" method="post">
+		<form name="jobform" action="/market/JOB/Controller/job_add.php" method="post">
 			<div class="" style="">
-
+				
 				<div id="jobTitleinput" class="form-group jobTitleinput">	
 					<b>Item</b> 	
-					<input id="jobTitle" type="text" class="form-control form-control-job jobTitle" name="job_title" placeholder="What are you renting">
+					<input id="jobTitle" name="job_title" type="text" class="form-control form-control-job jobTitle" placeholder="What are you renting">
 				</div>
 			
 				<div id="jobTypeinput" class="form-group">
-				<b>Category</b>	<select type="text" class="form-control form-control-job" name="job_type"   >
-						  <option value="1">Electronics</option>
-						  <option value="2">Computer & Accessories</option>
-						  <option value="3">Tools & Equipment</option>
-						  <option value="9">Others</option>
-						</select>				
+				<b>Category</b>	
+					<select name="job_type"   type="text" class="form-control form-control-job" >
+						<option value="1">Electronics</option>
+						<option value="2">Computer & Accessories</option>
+						<option value="3">Tools & Equipment</option>
+						<option value="9">Others</option>
+					</select>				
 				</div>
-					
 				
 				<div id ="" class="form-group">
 					<b>Rental</b>	
@@ -80,7 +80,7 @@
 			
 			<div class="checkbox" id="jobTerms">
 				<label>
-				  <input name="terms" id="jobTermsInput" type="checkbox" value="haha">I agree to the <a href="/danceseen/terms.php" target="_blank">Terms & Conditions</a>
+				  <input name="terms" id="jobTermsInput" type="checkbox" value="haha">I agree to the <a href="/market/terms.php" target="_blank">Terms & Conditions</a>
 				</label>
 			</div>
 			<div>
@@ -93,6 +93,6 @@
 </div>
 </div>
 </div>
-<script type='text/javascript' src="/danceseen/js/job_validation.js"></script>
-<script type='text/javascript' src="/danceseen/js/job_alert.js"></script>
-<script type='text/javascript' src="/danceseen/js/date_pick.js"></script>
+<script type='text/javascript' src="/market/js/job_validation.js"></script>
+<script type='text/javascript' src="/market/js/job_alert.js"></script>
+<script type='text/javascript' src="/market/js/date_pick.js"></script>

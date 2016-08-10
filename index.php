@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 	session_start();
 	require_once $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
@@ -11,9 +9,10 @@
 	}
 	require_once($globe->g_head());
 ?>
+<!DOCTYPE html>
 
-<script type='text/javascript' src='/market/js/fblogin.js'></script>
-<script type='text/javascript' src='/market/js/facebook.js'></script>
+<script type='text/javascript' src='/market/js/fbAccount.js'></script>
+<script type='text/javascript' src='/market/js/fbInitial.js'></script>
 
 <html>
 <head>

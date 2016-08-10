@@ -4,9 +4,9 @@
 		header("Location: home.php");
 	}
 	
-	require $_SERVER["DOCUMENT_ROOT"] . "/danceseen/COMMON/Globe.php";
+	require $_SERVER["DOCUMENT_ROOT"] . "/market/COMMON/Globe.php";
 	$globe = new Globe();
-	require $_SERVER["DOCUMENT_ROOT"] . "/danceseen/JOB/Model/Job.php";
+	require $_SERVER["DOCUMENT_ROOT"] . "/market/JOB/Model/Job.php";
 	$job = new Job();
 
 	
@@ -30,7 +30,7 @@
 	
 	$result = $job->addJob($user, $title, $type, $pay, $startdate, $starttime, $enddate, $endtime,$venue, $description, $status);
 	if($result) {
-		header("Location: /danceseen/JOB/job.php?jobpost=success");
+		header("Location: /market/JOB/job.php?jobpost=success");
 	}
 	else {
 	}
