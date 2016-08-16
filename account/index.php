@@ -17,7 +17,7 @@
 	<?php
 		require_once($globe->g_head());
 	?>
-	<script type="text/javascript" src="js/country.js"></script>
+	<script type="text/javascript" src="/market/js/country.js"></script>
 	<script>
 		$(document).ready(function(){
 		  $("#btn_add").click(function(){
@@ -118,7 +118,7 @@
 		<table class="table">
 			<tr>
             <td style="width:30%;">First Dance</td>
-			<td><input type	="date" value="22/11/2007" class="form-control"></td>
+			<td><input type	="date" value="2007-07-22" class="form-control"></td>
 			</tr>
 			
 			<tr>
@@ -220,7 +220,7 @@
 	
 	<?php require_once($globe->g_footer()); ?>
 </body>
-<script src="js/bootstrap-datepicker.js"></script>
+<script src="/market/js/bootstrap-datepicker.js"></script>
 <script>
 	
 	$('#date').datepicker({

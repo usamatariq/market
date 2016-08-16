@@ -84,8 +84,8 @@
 	require_once($globe->g_footer()); 
 
 	//MODAL
-	require_once $globe->g_root() . "/COMMON/view/loginModal.php";
-	require_once $globe->g_root() . "/COMMON/view/registerModal.php";
+	require_once $globe->g_root() . "/common/view/loginModal.php";
+	require_once $globe->g_root() . "/common/view/registerModal.php";
 	?>
 </body>
 </html> 
